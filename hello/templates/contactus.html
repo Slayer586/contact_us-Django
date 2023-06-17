@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}<title>Document</title>{% endblock title %}
+    {% block cssfile %}    
+    <link rel="stylesheet" href=" {% static './css_files/contactus.css' %} ">    
+    {% endblock cssfile %}
+
+{% block body %}
+<body>
+
+    <div class="container">
+        <div style="text-align:center">
+            <h2>Contact Us</h2>
+            <p>Swing by for a cup of coffee, or leave us a message:</p>
+        </div>
+        <div class="row">
+            <div class="column">
+                <iframe class="map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.4019316106874!2d72.86889221482143!3d19.046057987105158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf21727f6e19%3A0x473006136ad440dc!2sK.%20J.%20Somaiya%20Institute%20of%20Engineering%20and%20Information%20Technology!5e0!3m2!1sen!2sin!4v1679470522309!5m2!1sen!2sin"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="column">
+                <form method ="POST" action="/contactus">
+                    {% csrf_token %}
+                    <label for="fname">First Name</label>
+                    <input type="text" class ="form-control" id="fname" name="firstname" placeholder="Your name..">
+                    <label for="lname">Last Name</label>
+                    <input type="text"  class ="form-control"  id="lname" name="lastname" placeholder="Your last name..">
+                    <label for="email">Email</label>
+                    <input type="email"  class ="form-control" id="email" name="email" placeholder="Your email address">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" class ="form-control"  pattern="[0-9]{10}" id="phone" name="phone" placeholder="Your Phone number">
+                    <br>
+                    <br>
+                    <label for="subject">Subject</label>
+                    <textarea id="subject" name="subject" class ="form-control"  placeholder="Write something.."
+                        style="height:170px"></textarea>
+                    <input type="submit" class ="form-control"  value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src=" {% static './js_files/navbar.js' %} "></script>
+</body>
+{% endblock body %}
+</html>
